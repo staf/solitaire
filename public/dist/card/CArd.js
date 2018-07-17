@@ -1,0 +1,68 @@
+export var Suit;
+(function (Suit) {
+    Suit["Cloves"] = "Cloves";
+    Suit["Diamonds"] = "Diamonds";
+    Suit["Hearts"] = "Hearts";
+    Suit["Spades"] = "Spades";
+})(Suit || (Suit = {}));
+export var Color;
+(function (Color) {
+    Color[Color["Black"] = 0] = "Black";
+    Color[Color["Red"] = 1] = "Red";
+})(Color || (Color = {}));
+export const ValueNames = {
+    1: 'Ace',
+    2: 'Two',
+    3: 'Three',
+    4: 'Four',
+    5: 'Five',
+    6: 'Six',
+    7: 'Seven',
+    8: 'Eight',
+    9: 'Nine',
+    10: 'Ten',
+    11: 'Jack',
+    12: 'Queen',
+    13: 'King'
+};
+export default class Card {
+    constructor(suit, value) {
+        this._visible = false;
+        this.suit = suit;
+        this.value = value;
+        this.node = this.buildNode();
+    }
+    get visible() {
+        return this._visible;
+    }
+    set visible(visible) {
+        this._visible = visible;
+        this.node.classList.toggle('hidden', !this._visible);
+    }
+    getSuit() {
+        return this.suit;
+    }
+    getValue() {
+        return this.value;
+    }
+    getColor() {
+        if (this.suit == Suit.Cloves || this.suit == Suit.Spades) {
+            return Color.Black;
+        }
+        return Color.Red;
+    }
+    toString() {
+        return ValueNames[this.value] + ' of ' + this.suit;
+    }
+    reset() {
+        this.visible = false;
+        this.node.remove();
+    }
+    buildNode() {
+        const node = document.createElement('div');
+        node.className = 'card hidden';
+        node.textContent = this.toString();
+        return node;
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ2FyZC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9jYXJkL0NhcmQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsTUFBTSxDQUFOLElBQVksSUFLWDtBQUxELFdBQVksSUFBSTtJQUNaLHlCQUFpQixDQUFBO0lBQ2pCLDZCQUFxQixDQUFBO0lBQ3JCLHlCQUFpQixDQUFBO0lBQ2pCLHlCQUFpQixDQUFBO0FBQ3JCLENBQUMsRUFMVyxJQUFJLEtBQUosSUFBSSxRQUtmO0FBRUQsTUFBTSxDQUFOLElBQVksS0FHWDtBQUhELFdBQVksS0FBSztJQUNiLG1DQUFLLENBQUE7SUFDTCwrQkFBRyxDQUFBO0FBQ1AsQ0FBQyxFQUhXLEtBQUssS0FBTCxLQUFLLFFBR2hCO0FBTUQsTUFBTSxDQUFDLE1BQU0sVUFBVSxHQUFnQjtJQUNuQyxDQUFDLEVBQUUsS0FBSztJQUNSLENBQUMsRUFBRSxLQUFLO0lBQ1IsQ0FBQyxFQUFFLE9BQU87SUFDVixDQUFDLEVBQUUsTUFBTTtJQUNULENBQUMsRUFBRSxNQUFNO0lBQ1QsQ0FBQyxFQUFFLEtBQUs7SUFDUixDQUFDLEVBQUUsT0FBTztJQUNWLENBQUMsRUFBRSxPQUFPO0lBQ1YsQ0FBQyxFQUFFLE1BQU07SUFDVCxFQUFFLEVBQUUsS0FBSztJQUNULEVBQUUsRUFBRSxNQUFNO0lBQ1YsRUFBRSxFQUFFLE9BQU87SUFDWCxFQUFFLEVBQUUsTUFBTTtDQUNiLENBQUM7QUFFRixNQUFNLENBQUMsT0FBTztJQWdCVixZQUFZLElBQVUsRUFBRSxLQUFhO1FBRjdCLGFBQVEsR0FBWSxLQUFLLENBQUM7UUFHOUIsSUFBSSxDQUFDLElBQUksR0FBRyxJQUFJLENBQUM7UUFDakIsSUFBSSxDQUFDLEtBQUssR0FBRyxLQUFLLENBQUM7UUFDbkIsSUFBSSxDQUFDLElBQUksR0FBRyxJQUFJLENBQUMsU0FBUyxFQUFFLENBQUM7SUFDakMsQ0FBQztJQWZELElBQVcsT0FBTztRQUNkLE9BQU8sSUFBSSxDQUFDLFFBQVEsQ0FBQztJQUN6QixDQUFDO0lBRUQsSUFBVyxPQUFPLENBQUMsT0FBZ0I7UUFDL0IsSUFBSSxDQUFDLFFBQVEsR0FBRyxPQUFPLENBQUM7UUFDeEIsSUFBSSxDQUFDLElBQUksQ0FBQyxTQUFTLENBQUMsTUFBTSxDQUFDLFFBQVEsRUFBRSxDQUFDLElBQUksQ0FBQyxRQUFRLENBQUMsQ0FBQztJQUN6RCxDQUFDO0lBVU0sT0FBTztRQUNWLE9BQU8sSUFBSSxDQUFDLElBQUksQ0FBQztJQUNyQixDQUFDO0lBRU0sUUFBUTtRQUNYLE9BQU8sSUFBSSxDQUFDLEtBQUssQ0FBQztJQUN0QixDQUFDO0lBRU0sUUFBUTtRQUNYLElBQUksSUFBSSxDQUFDLElBQUksSUFBSSxJQUFJLENBQUMsTUFBTSxJQUFJLElBQUksQ0FBQyxJQUFJLElBQUksSUFBSSxDQUFDLE1BQU0sRUFBRTtZQUN0RCxPQUFPLEtBQUssQ0FBQyxLQUFLLENBQUM7U0FDdEI7UUFFRCxPQUFPLEtBQUssQ0FBQyxHQUFHLENBQUM7SUFDckIsQ0FBQztJQUVNLFFBQVE7UUFDWCxPQUFPLFVBQVUsQ0FBQyxJQUFJLENBQUMsS0FBSyxDQUFDLEdBQUcsTUFBTSxHQUFHLElBQUksQ0FBQyxJQUFJLENBQUM7SUFDdkQsQ0FBQztJQUVNLEtBQUs7UUFDUixJQUFJLENBQUMsT0FBTyxHQUFHLEtBQUssQ0FBQztRQUNyQixJQUFJLENBQUMsSUFBSSxDQUFDLE1BQU0sRUFBRSxDQUFDO0lBQ3ZCLENBQUM7SUFFUyxTQUFTO1FBQ2YsTUFBTSxJQUFJLEdBQUcsUUFBUSxDQUFDLGFBQWEsQ0FBQyxLQUFLLENBQUMsQ0FBQztRQUMzQyxJQUFJLENBQUMsU0FBUyxHQUFHLGFBQWEsQ0FBQztRQUUvQixJQUFJLENBQUMsV0FBVyxHQUFHLElBQUksQ0FBQyxRQUFRLEVBQUUsQ0FBQztRQUVuQyxPQUFPLElBQUksQ0FBQztJQUNoQixDQUFDO0NBQ0oifQ==

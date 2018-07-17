@@ -1,0 +1,35 @@
+import Card, { Suit } from "./Card.js";
+export default class Deck {
+    static construct() {
+        const cards = [];
+        for (const suit of [Suit.Spades, Suit.Cloves, Suit.Hearts, Suit.Diamonds]) {
+            for (let value = 1; value <= 13; value++) {
+                cards.push(new Card(suit, value));
+            }
+        }
+        return new Deck(cards);
+    }
+    constructor(cards) {
+        this.cards = cards;
+    }
+    shuffle() {
+        let shuffleIndex = this.cards.length;
+        let randomIndex;
+        let tempCard;
+        while (shuffleIndex !== 0) {
+            randomIndex = Math.floor(Math.random() * shuffleIndex--);
+            tempCard = this.cards[randomIndex];
+            this.cards[randomIndex] = this.cards[shuffleIndex];
+            this.cards[shuffleIndex] = tempCard;
+        }
+    }
+    pop() {
+        return this.cards.pop();
+    }
+    remainingCards() {
+        let cards = this.cards;
+        this.cards = [];
+        return cards;
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRGVjay5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9jYXJkL0RlY2sudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxJQUFJLEVBQUUsRUFBRSxJQUFJLEVBQUUsTUFBTSxXQUFXLENBQUM7QUFFdkMsTUFBTSxDQUFDLE9BQU87SUFHVixNQUFNLENBQUMsU0FBUztRQUNaLE1BQU0sS0FBSyxHQUFXLEVBQUUsQ0FBQztRQUN6QixLQUFLLE1BQU0sSUFBSSxJQUFJLENBQUMsSUFBSSxDQUFDLE1BQU0sRUFBRSxJQUFJLENBQUMsTUFBTSxFQUFFLElBQUksQ0FBQyxNQUFNLEVBQUUsSUFBSSxDQUFDLFFBQVEsQ0FBQyxFQUFFO1lBQ3ZFLEtBQUssSUFBSSxLQUFLLEdBQUcsQ0FBQyxFQUFFLEtBQUssSUFBSSxFQUFFLEVBQUUsS0FBSyxFQUFFLEVBQUU7Z0JBQ3RDLEtBQUssQ0FBQyxJQUFJLENBQUMsSUFBSSxJQUFJLENBQUMsSUFBSSxFQUFFLEtBQUssQ0FBQyxDQUFDLENBQUM7YUFDckM7U0FDSjtRQUNELE9BQU8sSUFBSSxJQUFJLENBQUMsS0FBSyxDQUFDLENBQUM7SUFDM0IsQ0FBQztJQUVELFlBQVksS0FBYTtRQUNyQixJQUFJLENBQUMsS0FBSyxHQUFHLEtBQUssQ0FBQztJQUN2QixDQUFDO0lBRU0sT0FBTztRQUNWLElBQUksWUFBWSxHQUFXLElBQUksQ0FBQyxLQUFLLENBQUMsTUFBTSxDQUFDO1FBQzdDLElBQUksV0FBbUIsQ0FBQztRQUN4QixJQUFJLFFBQWMsQ0FBQztRQUNuQixPQUFPLFlBQVksS0FBSyxDQUFDLEVBQUU7WUFDdkIsV0FBVyxHQUFHLElBQUksQ0FBQyxLQUFLLENBQUMsSUFBSSxDQUFDLE1BQU0sRUFBRSxHQUFHLFlBQVksRUFBRSxDQUFDLENBQUM7WUFDekQsUUFBUSxHQUFHLElBQUksQ0FBQyxLQUFLLENBQUMsV0FBVyxDQUFDLENBQUM7WUFDbkMsSUFBSSxDQUFDLEtBQUssQ0FBQyxXQUFXLENBQUMsR0FBRyxJQUFJLENBQUMsS0FBSyxDQUFDLFlBQVksQ0FBQyxDQUFDO1lBQ25ELElBQUksQ0FBQyxLQUFLLENBQUMsWUFBWSxDQUFDLEdBQUcsUUFBUSxDQUFDO1NBQ3ZDO0lBQ0wsQ0FBQztJQUVNLEdBQUc7UUFDTixPQUFPLElBQUksQ0FBQyxLQUFLLENBQUMsR0FBRyxFQUFFLENBQUM7SUFDNUIsQ0FBQztJQUVNLGNBQWM7UUFDakIsSUFBSSxLQUFLLEdBQUcsSUFBSSxDQUFDLEtBQUssQ0FBQztRQUN2QixJQUFJLENBQUMsS0FBSyxHQUFHLEVBQUUsQ0FBQztRQUVoQixPQUFPLEtBQUssQ0FBQztJQUNqQixDQUFDO0NBQ0oifQ==

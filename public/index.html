@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Solit</title>
+    <style>
+        * {
+            box-sizing: inherit;
+        }
+
+        html,body {
+            box-sizing: border-box;
+        }
+
+        body {
+            font: 400 12px/20px 'Open Sans', sans-serif;
+        }
+
+        .card {
+            width: 130px;
+            padding: 4px;
+        }
+
+        .card:not(:last-child) {
+            margin-bottom: 4px;
+        }
+
+        .card:hover {
+            background-color: #ededed;
+            cursor: pointer;
+        }
+
+        .flex {
+            display: flex;
+            flex-flow: row nowrap;
+        }
+
+        .flex>div {
+            width: 130px;
+            border: 1px solid #ddd;
+        }
+
+        .flex>div:not(:first-child) {
+            border-left: 0;
+        }
+
+        .hidden {
+            color: #999;
+            font-weight: 300;
+        }
+
+        .loader {
+            padding: 100px;
+            text-align: center;
+            font-weight: 300;
+            font-size: 50px;
+            line-height: 65px;
+            color: #999;
+        }
+
+        .empty {
+            border-top: 0 !important;
+        }
+
+        .top>div {
+            border-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loader" class="loader">loading...</div>
+    <button id="reset">reset</button>
+    <button id="draw">draw</button>
+    <script type="module" src="/dist/main.js"></script>
+</body>
+
+</html>
